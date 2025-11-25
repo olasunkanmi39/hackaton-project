@@ -1,29 +1,32 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import eksuth from '../../assets/eksuth.png';
 
 function Sidebar() {
   const location = useLocation();
   const { user } = useAuth();
 
   const navigation = [
-    { name: 'Dashboard', href: '/', icon: '🏠', roles: ['all'] },
+    { name: 'Dashboard', href: '/', icon: '🏠', roles: ['admin', 'doctor', 'nurse',  ] },
     { name: 'Patient Management', href: '/patients', icon: '👥', roles: ['admin', 'nurse', 'doctor'] },
     { name: 'Patient Wallet', href: '/wallet', icon: '💰', roles: ['admin', 'finance', 'patient', 'paypoint'] },
     { name: 'Doctor Dashboard', href: '/doctor', icon: '👨‍⚕️', roles: ['doctor', 'admin'] },
-    { name: 'Laboratory & Radiology', href: '/lab', icon: '🔬', roles: ['doctor', 'lab_technician', 'admin'] },
+    { name: 'Laboratory & Radiology', href: '/lab', icon: '🔬', roles: ['doctor', 'lab_technician', 'admin', 'laboratory' ] },
     { name: 'Pharmacy', href: '/pharmacy', icon: '💊', roles: ['pharmacist', 'admin'] },
     { name: 'Admin Panel', href: '/admin', icon: '⚙️', roles: ['admin'] },
-    { name: 'Discharge Module', href: '/discharge', icon: '📋', roles: ['admin', 'nurse'] },
+    { name: 'Discharge Module', href: '/discharge', icon: '📋', roles: ['admin', 'nurse' ] },
   ];
 
+  
   const filteredNavigation = navigation.filter(item => 
     item.roles.includes('all') || item.roles.includes(user?.role)
   );
 
   return (
-    <div className="bg-gray-800 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
-      <nav>
+    <div className="bg-gradient-to-r from-green-600 to-green-200 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
+      <nav className='items-center'>
+        < img className='pl-10 pb-4' src={eksuth} alt="Eksuth Logo " />
         {filteredNavigation.map((item) => (
           <Link
             key={item.name}

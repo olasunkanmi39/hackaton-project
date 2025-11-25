@@ -14,8 +14,8 @@ function Dashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600">Welcome back, {user?.name}</p>
+        <h1 className="text-2xl font-bold text-green-900">Dashboard</h1>
+        <p className="text-green-600">Welcome back, {user?.name}</p>
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -42,7 +42,7 @@ function Dashboard() {
           <ul className="divide-y divide-gray-200">
             <li className="px-4 py-4 sm:px-6">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-blue-600 truncate">New patient admission</p>
+                <p className="text-sm font-medium text-green-600 truncate">New patient admission</p>
                 <div className="ml-2 flex-shrink-0 flex">
                   <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                     Completed
@@ -62,7 +62,7 @@ function Dashboard() {
             </li>
             <li className="px-4 py-4 sm:px-6">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-blue-600 truncate">Lab test results ready</p>
+                <p className="text-sm font-medium text-green-600 truncate">Lab test results ready</p>
                 <div className="ml-2 flex-shrink-0 flex">
                   <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                     Completed

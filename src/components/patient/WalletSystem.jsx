@@ -30,9 +30,9 @@ function WalletSystem() {
     <div className="bg-white rounded-lg shadow-md p-6">
       <h2 className="text-xl font-semibold mb-4">Patient Wallet System</h2>
       
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-        <h3 className="text-lg font-medium text-blue-800">Current Balance</h3>
-        <p className="text-3xl font-bold text-blue-600">${balance.toLocaleString()}</p>
+      <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+        <h3 className="text-lg font-medium text-green-800">Current Balance</h3>
+        <p className="text-3xl font-bold text-green-600">&#8358;{balance.toLocaleString()}</p>
       </div>
 
       <div className="mb-6">
@@ -49,7 +49,7 @@ function WalletSystem() {
           />
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md font-medium"
+            className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-md font-medium"
           >
             Add Funds
           </button>
@@ -73,7 +73,7 @@ function WalletSystem() {
               {transactions.map((transaction) => (
                 <tr key={transaction.id}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transaction.date}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${transaction.amount}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">&#8358;{transaction.amount}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 capitalize">{transaction.type}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 capitalize">{transaction.method}</td>
                   <td className="px-6 py-4 whitespace-nowrap">

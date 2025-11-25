@@ -53,7 +53,7 @@ function DoctorDashboard() {
                 </div>
                 <button
                   onClick={() => setSelectedPatient(patient)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
+                  className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm"
                 >
                   View Details
                 </button>
@@ -75,6 +75,23 @@ function DoctorDashboard() {
                   <p className="text-sm text-gray-500">Date: {test.date}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="mb-4">
+              <h4 className="font-semibold mb-2">Chief Complaint</h4>
+              <textarea
+                value={diagnosis}
+                onChange={(e) => setDiagnosis(e.target.value)}
+                placeholder="Enter Complaint..."
+                rows="3"
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                onClick={() => handleSaveDiagnosis(selectedPatient.id)}
+                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mt-2"
+              >
+                Save Complaint
+              </button>
             </div>
 
             <div className="mb-4">
@@ -105,7 +122,7 @@ function DoctorDashboard() {
               />
               <button
                 onClick={() => handleSendPrescription(selectedPatient.id)}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-2"
+                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mt-2"
               >
                 Send to Patient & Pharmacy
               </button>

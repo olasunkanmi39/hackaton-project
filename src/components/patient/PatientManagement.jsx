@@ -4,23 +4,33 @@ function PatientManagement() {
   const [patients, setPatients] = useState([
     {
       id: 1,
-      name: 'John Doe',
+      name: 'Ibrahim Musa',
       age: 45,
       gender: 'Male',
       contact: '+1234567890',
       admissionDate: '2024-01-10',
       status: 'admitted',
-      medicalHistory: 'Hypertension, Diabetes'
+      medicalWard: 'Male-Medical'
     },
     {
       id: 2,
-      name: 'Jane Smith',
+      name: 'Ogunleye Oluwaseun',
       age: 32,
       gender: 'Female',
       contact: '+0987654321',
       admissionDate: '2024-01-12',
       status: 'discharged',
-      medicalHistory: 'Asthma'
+      medicalWard: 'Female-Medical'
+    },
+     {
+      id: 3,
+      name: 'Adekunle Olumide',
+      age: 12,
+      gender: 'Female',
+      contact: '+0987654321',
+      admissionDate: '2024-01-12',
+      status: 'discharged',
+      medicalWard: 'Pediatric Ward'
     }
   ]);
 
@@ -30,7 +40,7 @@ function PatientManagement() {
     age: '',
     gender: '',
     contact: '',
-    medicalHistory: ''
+    medicalWard: ''
   });
 
   const handleInputChange = (e) => {
@@ -66,7 +76,7 @@ function PatientManagement() {
         <h2 className="text-xl font-semibold">Patient Management</h2>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium"
+          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md font-medium"
         >
           Add New Patient
         </button>
@@ -155,6 +165,8 @@ function PatientManagement() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gender</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Admission Date</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Admission Ward</th>
+
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
             </tr>
@@ -167,6 +179,7 @@ function PatientManagement() {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{patient.gender}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{patient.contact}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{patient.admissionDate}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{patient.medicalWard}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                     patient.status === 'admitted' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-
+import Hbackground from '../assets/Hbackground.png';
+import eksuth from '../assets/eksuth.png';
 function Login() {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const { login } = useAuth();
@@ -13,6 +14,10 @@ function Login() {
       { email: 'doctor@hospital.com', password: 'doctor123', name: 'Dr. John Smith', role: 'doctor' },
       { email: 'nurse@hospital.com', password: 'nurse123', name: 'Nurse Sarah Johnson', role: 'nurse' },
       { email: 'pharmacist@hospital.com', password: 'pharma123', name: 'Pharmacist Mike Brown', role: 'pharmacist' },
+      { email: 'laboratory@hospital.com', password: 'lab123', name: 'Lab Technician', role: 'laboratory' },
+      { email: 'patient@hospital.com', password: 'patient123', name: 'Patient User', role: 'patient' },
+      
+
     ];
 
     const user = users.find(u => u.email === credentials.email && u.password === credentials.password);
@@ -30,13 +35,16 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+    <div  className="min-h-screen w-screen bg-cover bg-center bg-no-repeat flex items-center justify-center py-12 px-4"
+  style={{ backgroundImage: `url(${Hbackground})` }}>
+      
+      <div className="max-w-md w-full space-y-8 ">
+        <div className="flex flex-col items-center ">    
+          <img src={eksuth} alt="Eksuth Logo" />
+          <h2 className="mt-6 text-center text-3xl font-extrabold  text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-white">
             Hospital Management System
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+          <p className="mt-2 text-center text-sm text-white">
             Sign in to your account
           </p>
         </div>
@@ -69,14 +77,14 @@ function Login() {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Sign in
             </button>
           </div>
 
           <div className="text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-white">
               Demo credentials: admin@hospital.com / admin123
             </p>
           </div>
