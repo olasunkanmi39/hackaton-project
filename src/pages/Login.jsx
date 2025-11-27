@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import Hbackground from '../assets/Hbackground.png';
-import eksuth from '../assets/eksuth.png';
+import HMSlogo from '../assets/HMSlogo.png';
 function Login() {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const { login } = useAuth();
@@ -40,7 +40,7 @@ function Login() {
       
       <div className="max-w-md w-full space-y-8 ">
         <div className="flex flex-col items-center ">    
-          <img src={eksuth} alt="Eksuth Logo" />
+          <img src={HMSlogo} alt="Eksuth " className='w-[50%]'/>
           <h2 className="mt-6 text-center text-3xl font-extrabold  text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-white">
             Hospital Management System
           </h2>

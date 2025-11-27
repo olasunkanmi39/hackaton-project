@@ -12,6 +12,8 @@ import Laboratory from './pages/Laboratory';
 import Pharmacy from './pages/Pharmacy';
 import AdminPanel from './pages/AdminPanel';
 import DischargeModule from './pages/DischargeModule';
+import LaboratoryClone from './components/lab/laboratoryClone';
+import nursepicture from './assets/nursepictures.jpg';
 
 function AppContent() {
   const { user, loading } = useAuth();
@@ -29,7 +31,8 @@ function AppContent() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-800 min-h-screen w-screen bg-cover bg-center bg-no-repeat  " style={{ backgroundImage: `url(${nursepicture})` }}>
+      
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header />
@@ -40,6 +43,7 @@ function AppContent() {
             <Route path="/wallet" element={<PatientWallet />} />
             <Route path="/doctor" element={<DoctorDashboard />} />
             <Route path="/lab" element={<Laboratory />} />
+            <Route path="/lb" element={<LaboratoryClone />} />
             <Route path="/pharmacy" element={<Pharmacy />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/discharge" element={<DischargeModule />} />

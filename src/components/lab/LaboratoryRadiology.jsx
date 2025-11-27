@@ -30,7 +30,8 @@ function LaboratoryRadiology() {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-xl font-semibold mb-6">Laboratory & Radiology </h2>
+      <h2 className="text-xl font-semibold mb-6"> </h2>
+      <h2 className="text-xl font-semibold mb-6 text-green-700">Incoming Laboratory & Radiology Result </h2>
       
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
