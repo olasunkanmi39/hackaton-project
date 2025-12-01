@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../context/AuthContext';
 
 function Dashboard() {
-  const { user } = useAuth();
+  const { user, } = useAuth();
 
   const stats = [
     { name: 'Total Patients', value: '127', change: '+12%', changeType: 'increase' },
@@ -18,71 +18,86 @@ function Dashboard() {
         <p className="text-green-600">Welcome back, {user?.name}</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map((item) => (
-          <div key={item.name} className="bg-transparent-500 overflow-hidden shadow rounded-lg">
-            <div className="px-4 py-5 sm:p-6">
-              <dt className="text-sm font-medium text-gray-500 truncate">{item.name}</dt>
-              <dd className="mt-1 text-3xl font-semibold text-gray-900">{item.value}</dd>
-              <div className={`text-sm font-medium ${
-                item.changeType === 'increase' ? 'text-green-600' : 'text-red-600'
-              }`}>
-                {item.change}
-              </div>
-            </div>
-          </div>
-        ))}
+      {/* Header */}
+      <header className="hover:bg-green-700 text-white p-4 rounded-xl shadow-md">
+        <h1 className="text-3xl font-bold text-center">Health & Wellness Tips</h1>
+        <p className="mt-2 text-lg text-center">Your daily guide to staying healthy, safe, and strong.</p>
+      </header>
+
+      {/* Health Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+
+        {/* Card 1 */}
+        <div className="hover:bg-white shadow rounded-xl p-6">
+          <h2 className="text-xl font-bold text-green-700">💧 Stay Hydrated</h2>
+          <p className="mt-3 text-gray-600">
+            Drink at least 6–8 glasses of water daily to keep your body active,
+            energized, and functioning properly.
+          </p>
+        </div>
+
+        {/* Card 2 */}
+        <div className="hover:bg-white shadow rounded-xl p-6">
+          <h2 className="text-xl font-bold text-green-700">🥗 Eat Balanced Meals</h2>
+          <p className="mt-3 text-gray-600">
+            Include fruits, vegetables, proteins, and whole grains in your meals.
+            Avoid excessive sugar and junk foods.
+          </p>
+        </div>
+
+        {/* Card 3 */}
+        <div className="hover:bg-white shadow rounded-xl p-6">
+          <h2 className="text-xl font-bold text-green-900">🏃‍♂️ Exercise Regularly</h2>
+          <p className="mt-3 text-gray-600">
+            Do at least 30 minutes of physical activity daily. Walking, jogging,
+            or stretching helps your body stay flexible and healthy.
+          </p>
+        </div>
+
+        {/* Card 4 */}
+        <div className="hover:bg-white shadow rounded-xl p-6">
+          <h2 className="text-xl font-bold text-green-700">😴 Sleep Well</h2>
+          <p className="mt-3 text-gray-600">
+            Ensure 7–9 hours of sleep every night. Quality sleep strengthens
+            your body and boosts your immune system.
+          </p>
+        </div>
+
+        {/* Card 5 */}
+        <div className="hover:bg-white shadow rounded-xl p-6">
+          <h2 className="text-xl font-bold text-green-700">🩺 Regular Checkups</h2>
+          <p className="mt-3 text-gray-600">
+            Visit a healthcare professional for routine medical checkups.
+            Early detection saves lives.
+          </p>
+        </div>
+
+        {/* Card 6 */}
+        <div className="hover:bg-white shadow rounded-xl p-6">
+          <h2 className="text-xl font-bold text-green-700">🧠 Mental Health Matters</h2>
+          <p className="mt-3 text-gray-600">
+            Reduce stress, practice mindfulness, and talk to someone if you feel
+            overwhelmed. A healthy mind equals a healthy life.
+          </p>
+        </div>
+
       </div>
 
-      <div className="bg- shadow rounded-lg">
-        <div className="px-4 py-5 sm:px-6">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">Recent Activity</h3>
-        </div>
-        <div className="border-t border-gray-200">
-          <ul className="divide-y divide-gray-200">
-            <li className="px-4 py-4 sm:px-6">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-green-600 truncate">New patient admission</p>
-                <div className="ml-2 flex-shrink-0 flex">
-                  <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Completed
-                  </p>
-                </div>
-              </div>
-              <div className="mt-2 sm:flex sm:justify-between">
-                <div className="sm:flex">
-                  <p className="flex items-center text-sm text-gray-500">
-                    John Doe was admitted to Ward A
-                  </p>
-                </div>
-                <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                  <p>2 hours ago</p>
-                </div>
-              </div>
-            </li>
-            <li className="px-4 py-4 sm:px-6">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-green-600 truncate">Lab test results ready</p>
-                <div className="ml-2 flex-shrink-0 flex">
-                  <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Completed
-                  </p>
-                </div>
-              </div>
-              <div className="mt-2 sm:flex sm:justify-between">
-                <div className="sm:flex">
-                  <p className="flex items-center text-sm text-gray-500">
-                    Blood test results for Jane Smith are available
-                  </p>
-                </div>
-                <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                  <p>4 hours ago</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+      {/* Big Advice Section */}
+      <div className="hover:bg-white transition duration-300  shadow rounded-xl p-8 mt-10">
+        <h2 className="text-2xl font-bold text-green-700">💡 General Health Advice</h2>
+        
+        <ul className="list-disc pl-6 mt-4 space-y-2 text-gray-800">
+          <li>Wash your hands regularly to avoid infections.</li>
+          <li>Maintain a clean environment and good personal hygiene.</li>
+          <li>Limit alcohol intake and avoid smoking.</li>
+          <li>Stay at a healthy weight through diet and exercise.</li>
+          <li>Manage stress with relaxation, prayer, and deep breathing.</li>
+          <li>Get vaccinated and follow medical instructions when given.</li>
+          <li>Stay connected with friends, family, and community.</li>
+        </ul>
       </div>
+
     </div>
   );
 }

@@ -9,7 +9,7 @@ function Sidebar() {
 
   const navigation = [
     { name: 'Dashboard', href: '/', icon: '🏠', roles: ['admin', 'doctor', 'nurse',  ] },
-    { name: 'Patient Management', href: '/patients', icon: '👥', roles: ['admin', 'nurse', 'doctor'] },
+    { name: 'Patient Management', href: '/patients', icon: '👥', roles: ['admin', 'nurse', ''] },
     { name: 'Patient Wallet', href: '/wallet', icon: '💰', roles: ['admin', 'finance', 'patient', 'paypoint'] },
     { name: 'Doctor Dashboard', href: '/doctor', icon: '👨‍⚕️', roles: ['doctor', 'admin'] },
     { name: 'Laboratory & Radiology', href: '/lab', icon: '🔬', roles: ['doctor', 'lab_technician', 'admin', '' ] },

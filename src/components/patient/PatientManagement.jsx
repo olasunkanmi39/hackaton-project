@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
+
+
+
 
 function PatientManagement() {
   const [patients, setPatients] = useState([
@@ -40,7 +44,8 @@ function PatientManagement() {
     age: '',
     gender: '',
     contact: '',
-    medicalWard: ''
+    medicalWard: '',
+    medicalHistory: ''
   });
 
   const handleInputChange = (e) => {
@@ -70,9 +75,97 @@ function PatientManagement() {
     ));
   };
 
+const { user, } = useAuth();
+
+  const stats = [
+    { name: 'Total Patients', value: '127', change: '+12%', changeType: 'increase' },
+    { name: 'Active Admissions', value: '24', change: '+4%', changeType: 'increase' },
+    { name: 'Pending Tests', value: '8', change: '-2%', changeType: 'decrease' },
+    { name: 'Today\'s Appointments', value: '15', change: '+3%', changeType: 'increase' },
+  ];
+
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
-      <div className="flex justify-between items-center mb-6">
+
+
+ <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-green-900">Dashboard</h1>
+        <p className="text-green-600">Welcome back, {user?.name}</p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((item) => (
+          <div key={item.name} className="bg-transparent-500 overflow-hidden shadow rounded-lg">
+            <div className="px-4 py-5 sm:p-6">
+              <dt className="text-sm font-medium text-gray-500 truncate">{item.name}</dt>
+              <dd className="mt-1 text-3xl font-semibold text-gray-900">{item.value}</dd>
+              <div className={`text-sm font-medium ${
+                item.changeType === 'increase' ? 'text-green-600' : 'text-red-600'
+              }`}>
+                {item.change}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg- shadow rounded-lg">
+        <div className="px-4 py-5 sm:px-6">
+          <h3 className="text-lg leading-6 font-medium text-gray-900">Recent Activity</h3>
+        </div>
+        <div className="border-t border-gray-200">
+          <ul className="divide-y divide-gray-200">
+            <li className="px-4 py-4 sm:px-6">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-medium text-green-600 truncate">New patient admission</p>
+                <div className="ml-2 flex-shrink-0 flex">
+                  <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Completed
+                  </p>
+                </div>
+              </div>
+              <div className="mt-2 sm:flex sm:justify-between">
+                <div className="sm:flex">
+                  <p className="flex items-center text-sm text-gray-500">
+                    John Doe was admitted to Ward A
+                  </p>
+                </div>
+                <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                  <p>2 hours ago</p>
+                </div>
+              </div>
+            </li>
+            <li className="px-4 py-4 sm:px-6">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-medium text-green-600 truncate">Lab test results ready</p>
+                <div className="ml-2 flex-shrink-0 flex">
+                  <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Completed
+                  </p>
+                </div>
+              </div>
+              <div className="mt-2 sm:flex sm:justify-between">
+                <div className="sm:flex">
+                  <p className="flex items-center text-sm text-gray-500">
+                    Blood test results for Jane Smith are available
+                  </p>
+                </div>
+                <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                  <p>4 hours ago</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+
+      <div className="flex justify-between items-center mb-6 mt-6">
         <h2 className="text-xl font-semibold">Patient Management</h2>
         <button
           onClick={() => setShowForm(true)}
@@ -94,7 +187,7 @@ function PatientManagement() {
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="Full Name"
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 />
                 <input
@@ -103,14 +196,14 @@ function PatientManagement() {
                   value={formData.age}
                   onChange={handleInputChange}
                   placeholder="Age"
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 />
                 <select
                   name="gender"
                   value={formData.gender}
                   onChange={handleInputChange}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 >
                   <option value="">Select Gender</option>
@@ -127,13 +220,29 @@ function PatientManagement() {
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 />
+                <select
+  name="medicalWard"
+  value={formData.medicalWard}
+  onChange={handleInputChange}
+  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  required
+>
+  <option value="">Select Admission Ward</option>
+  <option value="Male-Medical">Male-Medical</option>
+  <option value="Female-Medical">Female-Medical</option>
+  <option value="Pediatric Ward">Pediatric Ward</option>
+  <option value="Emergency Ward">Emergency Ward</option>
+  <option value="Surgical Ward">Surgical Ward</option>
+  <option value="Maternity Ward">Maternity Ward</option>
+</select>
+
                 <textarea
                   name="medicalHistory"
                   value={formData.medicalHistory}
                   onChange={handleInputChange}
                   placeholder="Medical History"
                   rows="3"
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
               <div className="flex justify-end space-x-3 mt-6">
@@ -146,7 +255,7 @@ function PatientManagement() {
                 </button>
                 <button
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+                  className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
                 >
                   Add Patient
                 </button>
@@ -188,7 +297,7 @@ function PatientManagement() {
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                  <button className="text-blue-600 hover:text-blue-900">Edit</button>
+                  <button className="text-green-600 hover:text-green-900">Edit</button>
                   {patient.status === 'admitted' && (
                     <button
                       onClick={() => dischargePatient(patient.id)}

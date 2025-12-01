@@ -47,7 +47,7 @@ function AdminPanel() {
         <h2 className="text-xl font-semibold">Admin Panel</h2>
         <button
           onClick={() => setShowStaffForm(true)}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium"
+          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md font-medium"
         >
           Add Staff Member
         </button>
@@ -109,7 +109,7 @@ function AdminPanel() {
           </div>
           <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
             <h4 className="font-semibold text-purple-800">Monthly Revenue</h4>
-            <p className="text-2xl font-bold text-purple-600">$45,670</p>
+            <p className="text-2xl font-bold text-purple-600">&#8358; 45,670</p>
           </div>
         </div>
       </div>
@@ -133,7 +133,7 @@ function AdminPanel() {
                   name="role"
                   value={newStaff.role}
                   onChange={handleInputChange}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 >
                   <option value="">Select Role</option>
@@ -150,7 +150,7 @@ function AdminPanel() {
                   value={newStaff.email}
                   onChange={handleInputChange}
                   placeholder="Email"
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 />
                 <input
@@ -159,7 +159,7 @@ function AdminPanel() {
                   value={newStaff.password}
                   onChange={handleInputChange}
                   placeholder="Password"
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 />
               </div>
@@ -173,7 +173,7 @@ function AdminPanel() {
                 </button>
                 <button
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+                  className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
                 >
                   Add Staff
                 </button>

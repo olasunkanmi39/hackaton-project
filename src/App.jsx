@@ -37,6 +37,7 @@ function AppContent() {
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header />
         <main className="flex-1 overflow-x-hidden overflow-y-auto p-6">
+          
           <Routes> 
             <Route path="/" element={<Dashboard />} />
             <Route path="/patients" element={<PatientManagement />} />
@@ -49,6 +50,7 @@ function AppContent() {
             <Route path="/discharge" element={<DischargeModule />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          
         </main>
       </div>
     </div>

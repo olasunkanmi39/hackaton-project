@@ -63,8 +63,8 @@ function DischargeModule() {
                   <p className="text-gray-600">Admitted: {patient.admissionDate}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-semibold">Total Bill: ${patient.totalBill}</p>
-                  <p className="text-sm text-gray-600">Paid: ${patient.amountPaid} | Balance: ${patient.balance}</p>
+                  <p className="font-semibold">Total Bill: &#8358;{patient.totalBill}</p>
+                  <p className="text-sm text-gray-600">Paid: &#8358;{patient.amountPaid} | Balance: &#8358;{patient.balance}</p>
                 </div>
               </div>
 

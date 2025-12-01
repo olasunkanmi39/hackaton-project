@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 
+import { useAuth } from '../../context/AuthContext';
+
+ 
+ 
+
+ 
+    
+
+
 function DoctorDashboard() {
+  
+
   const [patients, setPatients] = useState([
     {
       id: 1,
@@ -36,13 +47,102 @@ function DoctorDashboard() {
     alert('Prescription sent to patient and pharmacy');
   };
 
+
+const { user, } = useAuth();
+
+  const stats = [
+    { name: 'Total Patients', value: '127', change: '+12%', changeType: 'increase' },
+    { name: 'Active Admissions', value: '24', change: '+4%', changeType: 'increase' },
+    { name: 'Pending Tests', value: '8', change: '-2%', changeType: 'decrease' },
+    { name: 'Today\'s Appointments', value: '15', change: '+3%', changeType: 'increase' },
+  ];
+
+
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       <h2 className="text-xl font-semibold mb-6">Doctor's Dashboard</h2>
       
+      <div> 
+        <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-green-900">Dashboard</h1>
+        <p className="text-green-600">Welcome back, {user?.name}</p>
+      </div>
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((item) => (
+          <div key={item.name} className="bg-transparent-500 overflow-hidden shadow rounded-lg">
+            <div className="px-4 py-5 sm:p-6">
+              <dt className="text-sm font-medium text-gray-500 truncate">{item.name}</dt>
+              <dd className="mt-1 text-3xl font-semibold text-gray-900">{item.value}</dd>
+              <div className={`text-sm font-medium ${
+                item.changeType === 'increase' ? 'text-green-600' : 'text-red-600'
+              }`}>
+                {item.change}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg- shadow rounded-lg">
+        <div className="px-4 py-5 sm:px-6">
+          <h3 className="text-lg leading-6 font-medium text-gray-900">Recent Activity</h3>
+        </div>
+        <div className="border-t border-gray-200">
+          <ul className="divide-y divide-gray-200">
+            <li className="px-4 py-4 sm:px-6">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-medium text-green-600 truncate">New patient admission</p>
+                <div className="ml-2 flex-shrink-0 flex">
+                  <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Completed
+                  </p>
+                </div>
+              </div>
+              <div className="mt-2 sm:flex sm:justify-between">
+                <div className="sm:flex">
+                  <p className="flex items-center text-sm text-gray-500">
+                    John Doe was admitted to Ward A
+                  </p>
+                </div>
+                <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                  <p>2 hours ago</p>
+                </div>
+              </div>
+            </li>
+            <li className="px-4 py-4 sm:px-6">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-medium text-green-600 truncate">Lab test results ready</p>
+                <div className="ml-2 flex-shrink-0 flex">
+                  <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Completed
+                  </p>
+                </div>
+              </div>
+              <div className="mt-2 sm:flex sm:justify-between">
+                <div className="sm:flex">
+                  <p className="flex items-center text-sm text-gray-500">
+                    Blood test results for Jane Smith are available
+                  </p>
+                </div>
+                <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                  <p>4 hours ago</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+      </div>
+    
+
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Patient List</h3>
+          <h3 className="text-lg font-medium pt-6">Patient List</h3>
           {patients.map(patient => (
             <div key={patient.id} className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 cursor-pointer">
               <div className="flex justify-between items-start">
@@ -124,7 +224,7 @@ function DoctorDashboard() {
                 onClick={() => handleSendPrescription(selectedPatient.id)}
                 className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mt-2"
               >
-                Send to Patient & Pharmacy
+                Send to Pharmacy
               </button>
             </div>
           </div>

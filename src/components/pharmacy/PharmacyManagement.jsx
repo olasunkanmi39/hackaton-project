@@ -11,7 +11,7 @@ function PharmacyManagement() {
         { name: 'Lisinopril', dosage: '10mg', frequency: 'Once daily', quantity: 30 }
       ],
       status: 'pending',
-      totalCost: 45.50
+      totalCost: 4000.50
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ function PharmacyManagement() {
         { name: 'Albuterol', dosage: '100mcg', frequency: 'As needed', quantity: 1 }
       ],
       status: 'dispensed',
-      totalCost: 25.00
+      totalCost: 2500.00
     }
   ]);
 
@@ -63,7 +63,7 @@ function PharmacyManagement() {
             </div>
 
             <div className="flex justify-between items-center">
-              <p className="font-semibold">Total Cost: ${prescription.totalCost}</p>
+              <p className="font-semibold">Total Cost: &#8358;{prescription.totalCost}</p>
               {prescription.status === 'pending' && (
                 <button
                   onClick={() => dispenseMedication(prescription.id)}
